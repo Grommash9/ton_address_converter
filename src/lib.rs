@@ -78,7 +78,7 @@ fn friendly_to_raw(address: &str) -> String {
     let wc = if data[1] == 0xFF { -1 } else { data[1] as i8 };
     let hash_part = &data[2..34];
     
-    format!("{}:{}", wc, hex::encode(hash_part).to_uppercase())
+    format!("{}:{}", wc, hex::encode(hash_part).to_lowercase())
 }
 
 fn raw_to_friendly(address: &str, is_bounceable: bool, is_test: bool, is_url_safe: bool) -> String {
@@ -92,7 +92,7 @@ fn raw_to_friendly(address: &str, is_bounceable: bool, is_test: bool, is_url_saf
     }
 
     let wc: i8 = parts[0].parse().unwrap_or(0);
-    let hash = match hex::decode(parts[1]) {
+    let hash = match hex::decode(parts[1].to_lowercase()) {
         Ok(h) if h.len() == 32 => h,
         _ => return address.to_string(),
     };
