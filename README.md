@@ -19,7 +19,7 @@ When working with TON blockchain data (especially when processing blocks), addre
 
 Our benchmarks show the following performance characteristics when compared to existing solutions:
 
-| Number of Addresses | ton_address_converter | pytoniq | tonpy | vs pytoniq | vs tonpy |
+| Number of Addresses | ton_address_converter | pytoniq | tonsdk | vs pytoniq | vs tonsdk |
 |--------------------|----------------------|----------|--------|------------|-----------|
 | 100                | 0.0018s              | 0.0006s  | 0.0001s| 0.32x      | 0.07x     |
 | 1,000              | 0.0092s              | 0.0055s  | 0.0011s| 0.60x      | 0.12x     |
@@ -33,10 +33,10 @@ Our benchmarks show the following performance characteristics when compared to e
 - tonsdk==1.0.15
 
 ### Performance Analysis
-- For small batches (<1,000 addresses), tonpy and pytoniq perform better due to lower overhead
+- For small batches (<1,000 addresses), tonsdk and pytoniq perform better due to lower overhead
 - For larger batches (>10,000 addresses), ton_address_converter shows significant speedup:
   - Up to 3.48x faster than pytoniq
-  - Competitive performance with tonpy
+  - Competitive performance with tonsdk
 - Best suited for bulk operations where parallel processing benefits can be realized
 
 ## Installation
