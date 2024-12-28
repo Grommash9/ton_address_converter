@@ -31,7 +31,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest maturin
           
-      - name: Create and activate virtual environment
+      - name: Build, install and test
         shell: bash
         run: |
           python -m venv .venv
@@ -40,26 +40,9 @@ jobs:
           else
             source .venv/bin/activate
           fi
-          
-      - name: Build and install package
-        shell: bash
-        run: |
-          if [ "$RUNNER_OS" == "Windows" ]; then
-            source .venv/Scripts/activate
-          else
-            source .venv/bin/activate
-          fi
+          pip install pytest
           maturin develop
-          
-      - name: Run tests
-        shell: bash
-        run: |
-          if [ "$RUNNER_OS" == "Windows" ]; then
-            source .venv/Scripts/activate
-          else
-            source .venv/bin/activate
-          fi
-          pytest python/test_it.py -v
+          python -m pytest python/test_it.py -v
 
   build:
     needs: test
