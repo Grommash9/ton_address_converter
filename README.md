@@ -134,3 +134,5 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+<!-- Security scan triggered at 2025-09-02 05:21:56 -->
